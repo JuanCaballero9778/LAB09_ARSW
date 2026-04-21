@@ -1,19 +1,28 @@
 ### Escuela Colombiana de Ingeniería
 ### Arquitecturas de Software - ARSW
 
-## Escalamiento en Azure con Maquinas Virtuales, Sacale Sets y Service Plans
+#  🧪 Lab #9 - Escalamiento en Azure con Maquinas Virtuales, Sacale Sets y Service Plans
 
-### Dependencias
+---
+
+## 👨‍💻 Developers
+
+- 👨‍💻 **Juan Pablo Caballero**
+- 👨‍💻 **Robinson Steven Nuñez**
+
+---
+
+### 🎯 Dependencias
 * Cree una cuenta gratuita dentro de Azure. Para hacerlo puede guiarse de esta [documentación](https://azure.microsoft.com/es-es/free/students/). Al hacerlo usted contará con $100 USD para gastar durante 12 meses.
 
-### Parte 0 - Entendiendo el escenario de calidad
+### 🏛️ Parte 0 - Entendiendo el escenario de calidad
 
 Adjunto a este laboratorio usted podrá encontrar una aplicación totalmente desarrollada que tiene como objetivo calcular el enésimo valor de la secuencia de Fibonnaci.
 
 **Escalabilidad**
 Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000) de la secuencia de Fibonacci de forma concurrente y el sistema se encuentra bajo condiciones normales de operación, todas las peticiones deben ser respondidas y el consumo de CPU del sistema no puede superar el 70%.
 
-### Parte 1 - Escalabilidad vertical
+### 🎓 Parte 1 - Escalabilidad vertical
 
 1. Diríjase a el [Portal de Azure](https://portal.azure.com/) y a continuación cree una maquina virtual con las características básicas descritas en la imágen 1 y que corresponden a las siguientes:
     * Resource Group = SCALABILITY_LAB
@@ -97,9 +106,11 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
 10. ¿Hubo mejora en el consumo de CPU o en los tiempos de respuesta? Si/No ¿Por qué?
 11. Aumente la cantidad de ejecuciones paralelas del comando de postman a `4`. ¿El comportamiento del sistema es porcentualmente mejor?
 
-### Parte 2 - Escalabilidad horizontal
+[**Desarrollo parte 1**](docs/Parte1-LAB09.pdf)
 
-#### Crear el Balanceador de Carga
+### 🧩Parte 2 - Escalabilidad horizontal
+
+#### ⚙️ Crear el Balanceador de Carga
 
 Antes de continuar puede eliminar el grupo de recursos anterior para evitar gastos adicionales y realizar la actividad en un grupo de recursos totalmente limpio.
 
@@ -123,7 +134,7 @@ Antes de continuar puede eliminar el grupo de recursos anterior para evitar gast
 
 ![](images/part2/part2-vn-create.png)
 
-#### Crear las maquinas virtuales (Nodos)
+#### 🚀 Crear las maquinas virtuales (Nodos)
 
 Ahora vamos a crear 3 VMs (VM1, VM2 y VM3) con direcciones IP públicas standar en 3 diferentes zonas de disponibilidad. Después las agregaremos al balanceador de carga.
 
@@ -161,7 +172,7 @@ forever start FibonacciApp.js
 
 Realice este proceso para las 3 VMs, por ahora lo haremos a mano una por una, sin embargo es importante que usted sepa que existen herramientas para aumatizar este proceso, entre ellas encontramos Azure Resource Manager, OsDisk Images, Terraform con Vagrant y Paker, Puppet, Ansible entre otras.
 
-#### Probar el resultado final de nuestra infraestructura
+#### 🤔 Probar el resultado final de nuestra infraestructura
 
 1. Porsupuesto el endpoint de acceso a nuestro sistema será la IP pública del balanceador de carga, primero verifiquemos que los servicios básicos están funcionando, consuma los siguientes recursos:
 
